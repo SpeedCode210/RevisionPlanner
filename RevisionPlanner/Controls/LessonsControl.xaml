@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RevisionPlanner.Controls.LessonsControl" RowDefinitions="Auto,*">
+    <Label FontSize="28" HorizontalOptions="Center" Margin="10">Lessons</Label>
+    <CollectionView x:Name="_scroll" Grid.Row="1" ItemsLayout="VerticalList" Margin="0,0,0,35">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Border BackgroundColor="#22aaaaaa" Margin="10" StrokeThickness="3" Stroke="{Binding CategoryColor}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10,10,10,10" />
+                    </Border.StrokeShape>
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Text="{Binding DisplayName}"
+                           VerticalOptions="Start" FontAttributes="Bold" TextColor="{Binding TextColor}" Margin="5" />
+                        <Label Grid.Row="1" Text="{Binding NextRevisionDisplay}"
+                           VerticalOptions="Start" Margin="5"/>
+
+                        <ImageButton Clicked="ImageButton_Clicked" IsEnabled="{Binding CanRevise}" IsVisible="{Binding CanRevise}" Grid.Column="1" Source="lessons.png" WidthRequest="50" HeightRequest="50"
+                                 HorizontalOptions="End" VerticalOptions="Center" Margin="3"
+                                 BackgroundColor="#3f944b" Padding="3" CornerRadius="8">
+                            <ImageButton.Shadow>
+                                <Shadow Brush="Black"
+                Offset="0,0"
+                Radius="6"
+                Opacity="0.6" />
+                            </ImageButton.Shadow>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroupList>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="Scale" Value="1" />
+                                                <Setter Property="BackgroundColor" Value="#3f944b" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Pressed">
+                                            <VisualState.Setters>
+                                                <Setter Property="Scale" Value="0.95" />
+                                                <Setter Property="BackgroundColor" Value="#2a7b36" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateGroupList>
+                            </VisualStateManager.VisualStateGroups>
+
+                        </ImageButton>
+                    </Grid>
+                </Border>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</Grid>

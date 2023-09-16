@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RevisionPlanner.MainPage" Shell.NavBarIsVisible="False" Title="Revision Planner">
+    <Grid>
+        <ImageButton Clicked="PlusButton_Clicked" x:Name="_plusButton" ZIndex="2" BackgroundColor="#3f944b" CornerRadius="20" Padding="15" WidthRequest="100" Source="plus.png"
+                HeightRequest="100" VerticalOptions="End" TranslationY="-30">
+            <ImageButton.Shadow>
+                <Shadow Brush="Black"
+                Offset="0,0"
+                Radius="10"
+                Opacity="0.8" />
+            </ImageButton.Shadow>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="Scale" Value="1" />
+                                <Setter Property="BackgroundColor" Value="#3f944b" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Property="Scale" Value="0.95" />
+                                <Setter Property="BackgroundColor" Value="#2a7b36" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </VisualStateManager.VisualStateGroups>
+        </ImageButton>
+        <Grid x:Name="_mainView" RowDefinitions="*,80" BackgroundColor="#22aaaaaa" ZIndex="1">
+            
+            <Grid Grid.Row="1" BackgroundColor="#333333" ColumnDefinitions="*,*">
+                <ImageButton Clicked="LessonsButton_Clicked" x:Name="_lessonsButton" BackgroundColor="Transparent" CornerRadius="5" Padding="10" Source="lessons.png"
+                VerticalOptions="End" HorizontalOptions="End" Margin="0,0,30,0">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroupList>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale" Value="1" />
+                                        <Setter Property="BackgroundColor" Value="Transparent" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale" Value="0.95" />
+                                        <Setter Property="BackgroundColor" Value="#22aaaaaa" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateGroupList>
+                    </VisualStateManager.VisualStateGroups>
+                </ImageButton>
+
+                <ImageButton Grid.Column="1" Clicked="CategoriesButton_Clicked" x:Name="_categoriesButton" BackgroundColor="Transparent" CornerRadius="5" Padding="10" Source="categories.png"
+                VerticalOptions="End" HorizontalOptions="Start" Margin="30,0,0,0">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroupList>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale" Value="1" />
+                                        <Setter Property="BackgroundColor" Value="Transparent" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale" Value="0.95" />
+                                        <Setter Property="BackgroundColor" Value="#22aaaaaa" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateGroupList>
+                    </VisualStateManager.VisualStateGroups>
+                </ImageButton>
+
+
+            </Grid>
+        </Grid>
+    </Grid>
+
+</ContentPage>
