@@ -10,6 +10,7 @@
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="10,10,10,10" />
                     </Border.StrokeShape>
+                    <StackLayout>
                     <Grid Padding="10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -25,7 +26,11 @@
                         <Label Grid.Column="1" Text="{Binding Subtitle}"
                            HorizontalOptions="End" Margin="5" />
 
-                    </Grid>
+                            <Label Grid.Row="1" Text="{Binding Description}"
+                           HorizontalOptions="Start" Margin="5,-5,5,5" />
+                            <ImageButton Grid.Row="1" Grid.Column="1" HeightRequest="40" WidthRequest="40" HorizontalOptions="End" Source="cross.png" Clicked="DeleteButton_Clicked" IsEnabled="{Binding CanDelete}" IsVisible="{Binding CanDelete}"/>
+                        </Grid>
+                    </StackLayout>
                 </Border>
             </DataTemplate>
         </CollectionView.ItemTemplate>

@@ -63,10 +63,10 @@ namespace RevisionPlanner.Controls
 
             return new DisplayLesson()
             {
-                DisplayName = (l.Category == 0 ? "" :(cats.Where(_=> _.Id == l.Category).FirstOrDefault().Name + " - ")) + l.Name,
+                DisplayName = (l.Category == -1 ? "" :(cats.Where(_=> _.Id == l.Category).FirstOrDefault().Name + " - ")) + l.Name,
                 NextRevisionDisplay = text,
                 NextRevision = date,
-                CategoryColor = Color.FromArgb(l.Category == 0 ? "#3f944b" : cats.Where(_ => _.Id == l.Category).FirstOrDefault().Color),
+                CategoryColor = Color.FromArgb(l.Category == -1 ? "#3f944b" : cats.Where(_ => _.Id == l.Category).FirstOrDefault().Color),
                 TextColor = color,
                 CanRevise = revise,
                 CreationDate = l.CreationDate,

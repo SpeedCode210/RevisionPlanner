@@ -5,6 +5,7 @@ namespace RevisionPlanner
 {
     public class DatabaseConnector
     {
+        private bool _lock;
         public const string DatabaseFilename = "revisionData.db3";
 
         public const SQLite.SQLiteOpenFlags Flags =
@@ -27,12 +28,15 @@ namespace RevisionPlanner
 
         async Task Init()
         {
+            while (_lock)
+                await Task.Delay(100);
             if (Database is not null)
                 return;
-
+            _lock = true;
             Database = new SQLiteAsyncConnection(DatabasePath, Flags);
             await Database.CreateTableAsync<Lesson>();
             await Database.CreateTableAsync<Category>();
+            _lock = false;
         }
 
 

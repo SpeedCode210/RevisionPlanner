@@ -1,9 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="https://trungnt2910.github.io/schemas/maui/2022/colorpicker"
              x:Class="RevisionPlanner.MainPage" Shell.NavBarIsVisible="False" Title="Revision Planner">
     <Grid>
-        <ImageButton Clicked="PlusButton_Clicked" x:Name="_plusButton" ZIndex="2" BackgroundColor="#3f944b" CornerRadius="20" Padding="15" WidthRequest="100" Source="plus.png"
+        <Grid IsVisible="False" IsEnabled="False" Opacity="0" x:Name="_lessonAdd" ZIndex="3" BackgroundColor="#66000000" InputTransparent="False">
+            <Border HorizontalOptions="CenterAndExpand" WidthRequest="300" VerticalOptions="Center" Margin="10,0,10,0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10,10,10,10" />
+                </Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                Offset="0,0"
+                Radius="1000"
+                Opacity="0.8" />
+                </Border.Shadow>
+                <StackLayout>
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" Margin="5" FontSize="24">Add Lesson</Label>
+                    <Label Margin="20,15,0,0">Name</Label>
+                    <Entry PropertyChanged="LessonName_PropertyChanged" x:Name="_lessonName" Margin="10,5,10,5" Placeholder="Name"></Entry>
+                    <Label Margin="20,15,0,0">Category</Label>
+                    <Picker Title="Select a category" Margin="10,5,10,5" x:Name="_lessonCategoryPicker"/>
+                    <Label Margin="20,15,0,0">First Revision Date</Label>
+                    <DatePicker Margin="10,5,10,5" x:Name="_lessonDate"/>
+                    <Button Clicked="LessonAddButton_Clicked" x:Name="_lessonAddButton" IsEnabled="False" Text="Add" FontSize="20" Margin="10,0,10,10"/>
+                </StackLayout>
+            </Border>
+        </Grid>
+
+
+        <Grid IsVisible="False" IsEnabled="False" Opacity="0" x:Name="_categoryAdd" ZIndex="3" BackgroundColor="#66000000" InputTransparent="False">
+            <Border HorizontalOptions="Center" MinimumWidthRequest="300" VerticalOptions="Center" Margin="10,0,10,0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10,10,10,10" />
+                </Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                Offset="0,0"
+                Radius="1000"
+                Opacity="0.8" />
+                </Border.Shadow>
+                <StackLayout>
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" Margin="5" FontSize="24">Add Category</Label>
+                    <Label Margin="20,15,0,0">Name</Label>
+                    <Entry PropertyChanged="CategoryName_PropertyChanged" x:Name="_categoryName" Margin="5" Placeholder="Name"></Entry>
+                    <Label Margin="20,15,0,0">Description</Label>
+                    <Entry x:Name="_categoryDescription" Margin="5" Placeholder="Description"></Entry>
+                    <Label Margin="20,15,0,0">Color</Label>
+                    <Border BindingContext="{x:Reference Name=_colorPicker}" Stroke="{Binding PickedColor}" StrokeThickness="10" Margin="10" HeightRequest="150">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10" />
+                        </Border.StrokeShape>
+                        <controls:ColorPicker HeightRequest="150" x:Name="_colorPicker"/>
+                    </Border>
+                    <Button Clicked="CategoryAddButton_Clicked" x:Name="_categoryAddButton" IsEnabled="False" Text="Add" FontSize="20" Margin="10,0,10,10"/>
+                </StackLayout>
+            </Border>
+        </Grid>
+        <ImageButton Clicked="PlusButton_Clicked" BackgroundColor="#3f944b" x:Name="_plusButton" ZIndex="2" CornerRadius="20" Padding="15" WidthRequest="100" Source="plus.png"
                 HeightRequest="100" VerticalOptions="End" TranslationY="-30">
             <ImageButton.Shadow>
                 <Shadow Brush="Black"

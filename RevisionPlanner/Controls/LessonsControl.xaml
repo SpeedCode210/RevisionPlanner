@@ -24,7 +24,7 @@
                            VerticalOptions="Start" FontAttributes="Bold" TextColor="{Binding TextColor}" Margin="5" />
                         <Label Grid.Row="1" Text="{Binding NextRevisionDisplay}"
                            VerticalOptions="Start" Margin="5"/>
-
+                        <ImageButton Grid.Row="1" Grid.Column="1" Clicked="DeleteButton_Clicked" Source="cross.png" WidthRequest="30" HeightRequest="30" VerticalOptions="End" HorizontalOptions="End" Margin="3"/>
                         <ImageButton Clicked="ImageButton_Clicked" IsEnabled="{Binding CanRevise}" IsVisible="{Binding CanRevise}" Grid.Column="1" Source="lessons.png" WidthRequest="50" HeightRequest="50"
                                  HorizontalOptions="End" VerticalOptions="Center" Margin="3"
                                  BackgroundColor="#3f944b" Padding="3" CornerRadius="8">

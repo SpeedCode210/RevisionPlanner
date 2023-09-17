@@ -19,4 +19,13 @@ public partial class CategoriesControl : Grid
 		_scroll.ItemsSource = categories.GetDisplay(lessons);
     }
 
+    private async void DeleteButton_Clicked(object sender, EventArgs e)
+    {
+        if (MainPage.ClickLocked) return;
+        var btn = (ImageButton)sender;
+        var dispCat = (DisplayCategory)btn.BindingContext;
+        await _db.DeleteCategoryAsync(dispCat.Category);
+        Reload();
+
+    }
 }
